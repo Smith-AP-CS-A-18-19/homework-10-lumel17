@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Homework10 {
+	private int[][] arr;
 
 	/* Finish the constructor and create any necessary instance
 	 * variables. The constructor should create and save a
@@ -8,7 +9,12 @@ public class Homework10 {
 	 * columns
 	 */
 	public Homework10(int rows, int cols) {
-
+		arr = new int[rows][cols];
+		for(int r = 0; r < rows; r++){
+				for (int c = 0; c < cols; c++){
+					arr[r][c] = 0;
+				}
+			}
 	}
 
 	/* Fill the stored array with increasing values. The
@@ -17,14 +23,21 @@ public class Homework10 {
 	 * row major order. Return the filled array
 	 */
 	public int[][] problem1(int n) {
-
-	}
+		for (int r = 0; r < arr.length; r++){
+			for (int c = 0; c < arr[0].length; c++){
+				arr[r][c] = n;
+				n++;
+			}
+		}
+		return arr;
+}
 
 	/* Return row r of the stored array
 	 */
 	public int[] problem2(int r) {
-
+		return arr[r];
 	}
+
 
 	/* Find and return the sum of the indicated cell and its
 	 * four cardinal neighbors (up, down, left, right). Ensure
@@ -32,20 +45,42 @@ public class Homework10 {
 	 * or more neighbors
 	 */
 	public int problem3(int r, int c) {
-
+		int sum = arr[r][c];
+		if (r - 1 >= 0){
+			sum += arr[r-1][c];
+		}
+		if (r + 1 < arr.length){
+			sum += arr[r+1][c];
+		}
+		if (c + 1 < arr[0].length){
+			sum += arr [r][c+1];
+		}
+		if (c - 1 >= 0){
+			sum += arr[r][c-1];
+		}
+		return sum;
 	}
 
 	/* Create and return an ArrayList that contains the
 	 * elements from the indicated column
 	 */
 	public ArrayList<Integer> problem4(int c) {
-
+		ArrayList<Integer> column = new ArrayList<Integer>();
+		for (int r = 0; r < arr.length; r++) {
+			column.add(arr[r][c]);
+			}
+		return column;
 	}
 
 	/* Calculate and return the sum of the integers in
 	 * the supplied ArrayList
 	 */
 	public int problem5(ArrayList<Integer> aList) {
+		int sum = 0;
+		for (int i = 0; i < aList.size(); i++){
+			sum += aList.get(i);
+		}
+		return sum;
 
 	}
 
